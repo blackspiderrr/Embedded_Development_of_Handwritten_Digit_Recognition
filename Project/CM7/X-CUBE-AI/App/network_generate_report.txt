@@ -1,0 +1,155 @@
+STEdgeAI Core v9.0.0-19802
+Created date          : 2024-06-14 09:25:50
+Parameters            : generate --target stm32h7 --name network -m C:/Users/Lenovo/Documents/model.onnx --compression none --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace1148704003189008847082841132357395 --output C:/Users/Lenovo/.stm32cubemx/network_output
+
+Exec/report summary (generate)
+-------------------------------------------------------------------------------------------------------------
+model file         :   C:\Users\Lenovo\Documents\model.onnx                                                  
+type               :   onnx                                                                                  
+c_name             :   network                                                                               
+compression        :   none                                                                                  
+options            :   allocate-inputs, allocate-outputs                                                     
+optimization       :   balanced                                                                              
+target/series      :   stm32h7                                                                               
+workspace dir      :   C:\Users\Lenovo\AppData\Local\Temp\mxAI_workspace1148704003189008847082841132357395   
+output dir         :   C:\Users\Lenovo\.stm32cubemx\network_output                                           
+model_fmt          :   float                                                                                 
+model_name         :   model                                                                                 
+model_hash         :   0xd0ba372eed8202cb509e4e05309231de                                                    
+params #           :   8,490 items (33.16 KiB)                                                               
+-------------------------------------------------------------------------------------------------------------
+input 1/1          :   'input', f32(1x28x28x1), 3.06 KBytes, activations                                     
+output 1/1         :   'output', f32(1x10), 40 Bytes, activations                                            
+macc               :   481,480                                                                               
+weights (ro)       :   33,960 B (33.16 KiB) (1 segment)                                                      
+activations (rw)   :   8,976 B (8.77 KiB) (1 segment) *                                                      
+ram (total)        :   8,976 B (8.77 KiB) = 8,976 + 0 + 0                                                    
+-------------------------------------------------------------------------------------------------------------
+(*) 'input'/'output' buffers can be used from the activations buffer
+
+Model name - model
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+m_id   layer (type,original)                               oshape                 param/size          macc                      connected to   | c_size             c_macc                c_type          
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+14     fc_weight (Placeholder, Gemm)                       [h:320,c:10]           3,200/12,800                                                 | +40(+0.3%)         +3,210(+100.0%)       Dense_[o][3]    
+       fc_bias (Placeholder, Gemm)                         [c:10]                 10/40                                                        | -40(-100.0%)                             
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+0      input (Input, )                                     [b:1,h:28,w:28,c:1]                                                                 |                                          
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+4      _conv1_conv1_0_Conv_output_0 (Conv2D, Conv)         [b:1,h:24,w:24,c:10]   260/1,040        144,010                             input   | -1,040(-100.0%)    -144,010(-100.0%)     
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+5      _conv1_conv1_1_Relu_output_0 (Nonlinearity, Relu)   [b:1,h:24,w:24,c:10]                      5,760      _conv1_conv1_0_Conv_output_0   |                    -5,760(-100.0%)       
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+6      _conv1_conv1_2_MaxPool_output_0 (Pool, MaxPool)     [b:1,h:12,w:12,c:10]                      5,760      _conv1_conv1_1_Relu_output_0   | +1,040(+100.0%)    +149,770(+2600.2%)    Conv2D_[0]      
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+7      _conv2_conv2_0_Conv_output_0 (Conv2D, Conv)         [b:1,h:8,w:8,c:20]     5,020/20,080     320,020   _conv1_conv1_2_MaxPool_output_0   | -20,080(-100.0%)   -320,020(-100.0%)     
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+8      _conv2_conv2_1_Relu_output_0 (Nonlinearity, Relu)   [b:1,h:8,w:8,c:20]                        1,280      _conv2_conv2_0_Conv_output_0   |                    -1,280(-100.0%)       
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+9      _conv2_conv2_2_MaxPool_output_0 (Pool, MaxPool)     [b:1,h:4,w:4,c:20]                        1,280      _conv2_conv2_1_Relu_output_0   | +20,080(+100.0%)   +321,300(+25101.6%)   Conv2D_[1]      
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+13     _Reshape_output_0 (Reshape, Reshape)                [b:1,c:320]                                       _conv2_conv2_2_MaxPool_output_0   |                    +160(+100.0%)         Transpose_[2]   
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+14     output (Gemm, Gemm)                                 [b:1,c:10]                                3,210                 _Reshape_output_0   |                    -3,210(-100.0%)       
+                                                                                                                                   fc_weight   | 
+                                                                                                                                     fc_bias   | 
+------ --------------------------------------------------- ---------------------- -------------- --------- --------------------------------- --- ------------------ --------------------- --------------- 
+model/c-model: macc=481,320/481,480 +160(+0.0%) weights=33,960/33,960  activations=--/8,976 io=--/0
+
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name            : model
+c-name                : network
+c-node #              : 4
+c-array #             : 13
+activations size      : 8976 (1 segment)
+weights size          : 33960 (1 segment)
+macc                  : 481480
+inputs                : ['input_output']
+outputs               : ['output_output']
+
+C-Arrays (13)
+------ --------------------------------------- ------------ ------------------------- ------------- --------- 
+c_id   name (*_array)                          item/size    domain/mem-pool           c-type        comment   
+------ --------------------------------------- ------------ ------------------------- ------------- --------- 
+0      _Reshape_output_0_to_chlast_output      320/1280     activations/**default**   float                   
+1      _conv1_conv1_0_Conv_output_0_bias       10/40        weights/weights           const float             
+2      _conv1_conv1_0_Conv_output_0_output     1440/5760    activations/**default**   float                   
+3      _conv1_conv1_0_Conv_output_0_scratch0   480/1920     activations/**default**   float                   
+4      _conv1_conv1_0_Conv_output_0_weights    250/1000     weights/weights           const float             
+5      _conv2_conv2_0_Conv_output_0_bias       20/80        weights/weights           const float             
+6      _conv2_conv2_0_Conv_output_0_output     320/1280     activations/**default**   float                   
+7      _conv2_conv2_0_Conv_output_0_scratch0   320/1280     activations/**default**   float                   
+8      _conv2_conv2_0_Conv_output_0_weights    5000/20000   weights/weights           const float             
+9      input_output                            784/3136     activations/**default**   float         /input    
+10     output_bias                             10/40        weights/weights           const float             
+11     output_output                           10/40        activations/**default**   float         /output   
+12     output_weights                          3200/12800   weights/weights           const float             
+------ --------------------------------------- ------------ ------------------------- ------------- --------- 
+
+C-Layers (4)
+------ ------------------------------ ---- ------------ -------- ------- ------------------------------------------ --------------------- 
+c_id   name (*_layer)                 id   layer_type   macc     rom     tensors                                    shape (array id)      
+------ ------------------------------ ---- ------------ -------- ------- ------------------------------------------ --------------------- 
+0      _conv1_conv1_0_Conv_output_0   6    Conv2D       155530   1040    I: input_output                            f32(1x28x28x1) (9)    
+                                                                         S: _conv1_conv1_0_Conv_output_0_scratch0                         
+                                                                         W: _conv1_conv1_0_Conv_output_0_weights    f32(10x5x5x1) (4)     
+                                                                         W: _conv1_conv1_0_Conv_output_0_bias       f32(10) (1)           
+                                                                         O: _conv1_conv1_0_Conv_output_0_output     f32(1x12x12x10) (2)   
+------ ------------------------------ ---- ------------ -------- ------- ------------------------------------------ --------------------- 
+1      _conv2_conv2_0_Conv_output_0   9    Conv2D       322580   20080   I: _conv1_conv1_0_Conv_output_0_output     f32(1x12x12x10) (2)   
+                                                                         S: _conv2_conv2_0_Conv_output_0_scratch0                         
+                                                                         W: _conv2_conv2_0_Conv_output_0_weights    f32(20x5x5x10) (8)    
+                                                                         W: _conv2_conv2_0_Conv_output_0_bias       f32(20) (5)           
+                                                                         O: _conv2_conv2_0_Conv_output_0_output     f32(1x4x4x20) (6)     
+------ ------------------------------ ---- ------------ -------- ------- ------------------------------------------ --------------------- 
+2      _Reshape_output_0_to_chlast    13   Transpose    160      0       I: _conv2_conv2_0_Conv_output_0_output     f32(1x4x4x20) (6)     
+                                                                         O: _Reshape_output_0_to_chlast_output      f32(1x20x4x4) (0)     
+------ ------------------------------ ---- ------------ -------- ------- ------------------------------------------ --------------------- 
+3      output                         14   Dense        3210     12840   I: _Reshape_output_0_to_chlast_output      f32(1x20x4x4) (0)     
+                                                                         W: output_weights                          f32(10x320) (12)      
+                                                                         W: output_bias                             f32(10) (10)          
+                                                                         O: output_output                           f32(1x10) (11)        
+------ ------------------------------ ---- ------------ -------- ------- ------------------------------------------ --------------------- 
+
+
+
+Number of operations per c-layer
+------- ------ ----------------------------------------- --------- -------------- 
+c_id    m_id   name (type)                                     #op           type 
+------- ------ ----------------------------------------- --------- -------------- 
+0       6      _conv1_conv1_0_Conv_output_0 (Conv2D)       155,530   smul_f32_f32 
+1       9      _conv2_conv2_0_Conv_output_0 (Conv2D)       322,580   smul_f32_f32 
+2       13     _Reshape_output_0_to_chlast (Transpose)         160   smul_f32_f32 
+3       14     output (Dense)                                3,210   smul_f32_f32 
+------- ------ ----------------------------------------- --------- -------------- 
+total                                                      481,480 
+
+Number of operation types
+---------------- --------- ----------- 
+operation type           #           % 
+---------------- --------- ----------- 
+smul_f32_f32       481,480      100.0% 
+
+Complexity report (model)
+------ --------------------------------- ------------------------- ------------------------- ------ 
+m_id   name                              c_macc                    c_rom                     c_id   
+------ --------------------------------- ------------------------- ------------------------- ------ 
+14     fc_weight                         |                  0.7%   ||||||||||        37.8%   [3]    
+6      _conv1_conv1_2_MaxPool_output_0   ||||||||          32.3%   |                  3.1%   [0]    
+9      _conv2_conv2_2_MaxPool_output_0   ||||||||||||||||  67.0%   ||||||||||||||||  59.1%   [1]    
+13     _Reshape_output_0                 |                  0.0%   |                  0.0%   [2]    
+------ --------------------------------- ------------------------- ------------------------- ------ 
+macc=481,480 weights=33,960 act=8,976 ram_io=0
+
+Generated files (7)
+------------------------------------------------------------------- 
+C:\Users\Lenovo\.stm32cubemx\network_output\network_data_params.h   
+C:\Users\Lenovo\.stm32cubemx\network_output\network_data_params.c   
+C:\Users\Lenovo\.stm32cubemx\network_output\network_data.h          
+C:\Users\Lenovo\.stm32cubemx\network_output\network_data.c          
+C:\Users\Lenovo\.stm32cubemx\network_output\network_config.h        
+C:\Users\Lenovo\.stm32cubemx\network_output\network.h               
+C:\Users\Lenovo\.stm32cubemx\network_output\network.c               

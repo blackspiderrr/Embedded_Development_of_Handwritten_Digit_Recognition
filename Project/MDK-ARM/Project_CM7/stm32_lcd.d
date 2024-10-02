@@ -1,0 +1,11 @@
+project_cm7\stm32_lcd.o: ..\BSP\Utilities\lcd\stm32_lcd.c
+project_cm7\stm32_lcd.o: ..\BSP\Utilities\lcd\stm32_lcd.h
+project_cm7\stm32_lcd.o: ..\BSP\Utilities\lcd\../Fonts/fonts.h
+project_cm7\stm32_lcd.o: D:\smartcar\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+project_cm7\stm32_lcd.o: ../BSP/Components/Common/lcd.h
+project_cm7\stm32_lcd.o: D:\smartcar\MDK\ARM\ARMCC\Bin\..\include\stddef.h
+project_cm7\stm32_lcd.o: ..\BSP\Utilities\lcd\../Fonts/font24.c
+project_cm7\stm32_lcd.o: ..\BSP\Utilities\lcd\../Fonts/font20.c
+project_cm7\stm32_lcd.o: ..\BSP\Utilities\lcd\../Fonts/font16.c
+project_cm7\stm32_lcd.o: ..\BSP\Utilities\lcd\../Fonts/font12.c
+project_cm7\stm32_lcd.o: ..\BSP\Utilities\lcd\../Fonts/font8.c
