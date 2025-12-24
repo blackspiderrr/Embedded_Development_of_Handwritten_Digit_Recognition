@@ -6,21 +6,9 @@
   
 ## Demo
 - The function is shown as below.
-<video src="https://github.com/blackspiderrr/Embedded_Development_of_Handwritten_Digit_Recognition/releases/download/v1.0/demo_0.mp4"
-       controls
-       autoplay
-       loop
-       muted
-       width="600">
-</video>
-
-<video src="https://github.com/blackspiderrr/Embedded_Development_of_Handwritten_Digit_Recognition/releases/download/v1.0/demo_1.mp4"
-       controls
-       autoplay
-       loop
-       muted
-       width="600">
-</video>
+[▶️ Click to watch demo video (MP4)](
+https://github.com/blackspiderrr/Embedded_Development_of_Handwritten_Digit_Recognition/releases/download/v1.0/demo_0.mp4
+)
 
 ## Model
 - We use a basic CNN structure to detect and classify digits, which performs well on the MNIST Dataset.
