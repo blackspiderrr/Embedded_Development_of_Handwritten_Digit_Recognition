@@ -5,9 +5,8 @@
 - More details can be found in Report.pdf
   
 ## Demo
-- The function is shown as below.
 [▶️ Click to watch demo video (MP4)](
-https://github.com/blackspiderrr/Embedded_Development_of_Handwritten_Digit_Recognition/releases/download/v1.0/demo_0.mp4
+https://github.com/blackspiderrr/Embedded_Development_of_Handwritten_Digit_Recognition/releases/download/v1.0/DemoVideo.mp4
 )
 
 ## Model
