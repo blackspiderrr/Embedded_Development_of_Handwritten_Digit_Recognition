@@ -6,8 +6,13 @@
   
 ## Demo
 - The function is shown as below.
-![demo_0](https://raw.githubusercontent.com/blackspiderrr/Embedded_Development_of_Handwritten_Digit_Recognition/master/Demo/demo_0.gif)
-![demo_1](https://raw.githubusercontent.com/blackspiderrr/Embedded_Development_of_Handwritten_Digit_Recognition/master/Demo/demo_1.gif)
+<video src="Demo/demo_0.mp4"
+       controls
+       autoplay
+       loop
+       muted
+       width="600">
+</video>
 
 ## Model
 - We use a basic CNN structure to detect and classify digits, which performs well on the MNIST Dataset.
