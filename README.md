@@ -5,9 +5,12 @@
 - More details can be found in Report.pdf
   
 ## Demo
-[▶️ Click to watch demo video (MP4)](
-https://github.com/blackspiderrr/Embedded_Development_of_Handwritten_Digit_Recognition/releases/download/v1.0/DemoVideo.mp4
-)
+<p align="center">
+  <img src="Demo/demo_0.gif" width="600" />
+</p>
+<p align="center">
+  <img src="Demo/demo_1.gif" width="600" />
+</p>
 
 ## Model
 - We use a basic CNN structure to detect and classify digits, which performs well on the MNIST Dataset.
